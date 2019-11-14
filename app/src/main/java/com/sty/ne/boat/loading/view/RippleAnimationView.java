@@ -66,7 +66,7 @@ public class RippleAnimationView extends RelativeLayout {
         LayoutParams layoutParams = new LayoutParams(UIUtils.getInstance().getWidth(radius),
                 UIUtils.getInstance().getWidth(radius));
         layoutParams.addRule(CENTER_IN_PARENT, TRUE);
-        float maxScale = 10;
+        float maxScale = 10;  //缩放为圆的10倍尺寸
         //延迟时间
         int rippleDuration = 3500;
 
