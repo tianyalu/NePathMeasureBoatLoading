@@ -65,6 +65,7 @@ public class LoadingView extends View {
         super.onDraw(canvas);
         dst.reset();
         float distance = mAnimatorValue * length;
+        //起点在终点转半圈之后开始以两倍的速度追赶终点，最后在初始点追上
         float start = (float) (distance - ((0.5 - Math.abs(mAnimatorValue - 0.5)) *  length));
         pathMeasure.getSegment(start, distance, dst, true);
         canvas.drawPath(dst, paint);

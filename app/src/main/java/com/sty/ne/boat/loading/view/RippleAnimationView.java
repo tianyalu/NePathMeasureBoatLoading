@@ -78,7 +78,7 @@ public class RippleAnimationView extends RelativeLayout {
             addView(rippleCircle, layoutParams);
             viewList.add(rippleCircle);
             //添加动画
-            //            //X
+//            //X
 //            ObjectAnimator scaleXAnimator = ObjectAnimator.ofFloat(rippleCirCle, "scaleX", 1, maxScale);
 //            scaleXAnimator.setRepeatCount(ValueAnimator.INFINITE);
 //            scaleXAnimator.setRepeatMode(ValueAnimator.RESTART);
@@ -111,7 +111,8 @@ public class RippleAnimationView extends RelativeLayout {
         }
         animatorSet = new AnimatorSet();
         animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
-        animatorSet.playSequentially(animatorList);
+//        animatorSet.playSequentially(animatorList);
+        animatorSet.playTogether(animatorList);
     }
 
     //启动动画
@@ -142,12 +143,31 @@ public class RippleAnimationView extends RelativeLayout {
                         super.onAnimationEnd(animation);
                         count[0]++;
                         if(count[0] == childAnimations.size()){
-                            animatorSet.end();
+//                            animatorSet.end();
                             animationRunning = false;
                         }
                     }
                 });
             }
+            animatorSet.addListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animator) {
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animator) {
+                    //保险起见在这里也设置状态
+                    animationRunning = false;
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animator) {
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animator) {
+                }
+            });
         }
     }
 

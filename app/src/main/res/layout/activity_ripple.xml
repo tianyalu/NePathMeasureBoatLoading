@@ -9,7 +9,7 @@
     <com.sty.ne.boat.loading.view.RippleAnimationView
         android:id="@+id/ripple_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         app:radius="150"
         app:ripple_anim_color="@color/rippleColor"
